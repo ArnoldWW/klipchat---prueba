@@ -5,4 +5,3 @@ export default function Avatar({ image = "/user.jpg" }) {
     </div>
   );
 }
-asdaaaaaaaaaaaa;
