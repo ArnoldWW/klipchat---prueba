@@ -21,6 +21,7 @@ function App() {
         <div className="space-y-3">
           {posts.map((post) => (
             <Post
+              key={post.id}
               avartar={post.avartar}
               userName={post.userName}
               minutes={post.minutes}

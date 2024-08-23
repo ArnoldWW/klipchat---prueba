@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const AppContext = createContext(null);
 
 const INITIALPOST = [
   {
+    id: uuidv4(),
     avartar: "/user2.jpg",
     userName: "Camilo",
     minutes: "5",
@@ -20,6 +22,7 @@ function AppProvider({ children }) {
   /* Añadir una publicacion */
   const addPost = (text) => {
     const newPost = {
+      id: uuidv4(),
       userName: "Arnold",
       minutes: "0",
       likes: 0,
