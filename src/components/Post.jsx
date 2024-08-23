@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 export default function Post({
+  avartar = "/user.jpg",
   userName,
   minutes,
   likes = 0,
@@ -21,7 +22,6 @@ export default function Post({
 
   const handleClick = () => {
     setLike(!like);
-    console.log();
 
     if (!like) {
       setCounterLikes((c) => c + 1);
@@ -31,10 +31,10 @@ export default function Post({
   };
 
   return (
-    <article className="rounded-2xl p-5 bg-[#292927] space-y-5">
+    <article className="rounded-3xl p-5 bg-[#292927] space-y-5">
       <div className="flex justify-between items-center">
         <div className="flex justify-start items-center gap-3">
-          <Avatar image="/user2.jpg" />
+          <Avatar image={avartar} />
           <p>
             {userName}
             <span className="mx-2 text-sm text-neutral-400">•</span>
@@ -50,7 +50,7 @@ export default function Post({
         </div>
       </div>
 
-      <div>
+      <div className="flex overflow-x-auto">
         <p>{postText}</p>
       </div>
 

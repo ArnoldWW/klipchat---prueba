@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import PostListTopBar from "./components/PostListTopBar";
 
 function App() {
+  const { posts } = useContext(AppContext);
+
   return (
     <div className="py-5">
       <section className="w-[90%] max-w-[800px] mx-auto space-y-3">
@@ -15,13 +19,16 @@ function App() {
       <section className="w-[90%] max-w-[800px] mx-auto mt-5">
         <PostListTopBar />
         <div className="space-y-3">
-          <Post
-            userName="Camilo"
-            minutes="5"
-            likes={5}
-            comments={10}
-            postText="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum quisquam repellat perspiciatis nobis illo blanditiis, saepe ut pariatur quam molestias, possimus deleniti."
-          />
+          {posts.map((post) => (
+            <Post
+              avartar={post.avartar}
+              userName={post.userName}
+              minutes={post.minutes}
+              likes={post.likes}
+              comments={post.comments}
+              postText={post.postText}
+            />
+          ))}
         </div>
       </section>
     </div>
