@@ -3,13 +3,16 @@ import { AppContext } from "./context/AppContext";
 import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import PostListTopBar from "./components/PostListTopBar";
+import Modal from "./components/Modal";
+import ModalEdit from "./components/ModalEdit";
 
 function App() {
-  const { posts } = useContext(AppContext);
+  const { posts, image } = useContext(AppContext);
 
   return (
     <div className="py-5">
       <section className="w-[90%] max-w-[800px] mx-auto space-y-3">
+        {image && <img src={image} className="w-32" />}
         <h2 className="font-bold text-xl">KlipWall</h2>
         <div className="rounded-2xl p-5 bg-[#292927] flex justify-between gap-3">
           <PostForm />
@@ -23,6 +26,7 @@ function App() {
             <Post
               key={post.id}
               avartar={post.avartar}
+              image={post.image}
               userName={post.userName}
               minutes={post.minutes}
               likes={post.likes}
@@ -32,6 +36,9 @@ function App() {
           ))}
         </div>
       </section>
+
+      <Modal />
+      <ModalEdit />
     </div>
   );
 }

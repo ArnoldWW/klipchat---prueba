@@ -10,6 +10,7 @@ import {
 
 export default function Post({
   avartar = "/user.jpg",
+  image,
   userName,
   minutes,
   likes = 0,
@@ -33,6 +34,7 @@ export default function Post({
   return (
     <article className="rounded-3xl p-5 bg-[#292927] space-y-5">
       <div className="flex justify-between items-center">
+        {/* - */}
         <div className="flex justify-start items-center gap-3">
           <Avatar image={avartar} />
           <p>
@@ -50,10 +52,21 @@ export default function Post({
         </div>
       </div>
 
-      <div className="flex overflow-x-auto">
+      {/* - */}
+      <div className="space-y-3">
+        {image && (
+          <div className="mx-auto rounded-3xl overflow-hidden">
+            <img
+              src={image}
+              alt="post image"
+              className="object-cover w-full max-h-[500px]"
+            />
+          </div>
+        )}
         <p>{postText}</p>
       </div>
 
+      {/* - */}
       <div className="border-t-2 border-[#383835] pt-2 grid grid-cols-3">
         <button
           className={`flex justify-center gap-2 items-center px-5 p-2 hover:bg-neutral-700 rounded-3xl ${
@@ -75,6 +88,7 @@ export default function Post({
           <span>{shares > 0 ? `${shares}k shares` : "shares"}</span>
         </button>
       </div>
+      {/* - */}
     </article>
   );
 }

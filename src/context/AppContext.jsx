@@ -1,9 +1,7 @@
 import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-export const AppContext = createContext(null);
-
-const INITIALPOST = [
+const INITIALPOSTS = [
   {
     id: uuidv4(),
     avartar: "/user2.jpg",
@@ -16,13 +14,21 @@ const INITIALPOST = [
   }
 ];
 
+export const AppContext = createContext(null);
+
 function AppProvider({ children }) {
-  const [posts, setPosts] = useState(INITIALPOST);
+  const [posts, setPosts] = useState(INITIALPOSTS);
+  const [text, setText] = useState("");
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
+  const [image, setImage] = useState("");
+  const [imgAfterCrop, setImgAfterCrop] = useState("");
 
   /* Añadir una publicacion */
   const addPost = (text) => {
     const newPost = {
       id: uuidv4(),
+      image: imgAfterCrop ? imgAfterCrop : image,
       userName: "Arnold",
       minutes: "0",
       likes: 0,
@@ -32,10 +38,63 @@ function AppProvider({ children }) {
     };
 
     setPosts([...posts, newPost]);
+    setText("");
+    resetImages();
+    setIsOpenModal(false);
+  };
+
+  /* Guardar el recorte de la imagen */
+  const onCropDone = (imgCroppedArea) => {
+    const canvasEle = document.createElement("canvas");
+    canvasEle.width = imgCroppedArea.width;
+    canvasEle.height = imgCroppedArea.height;
+
+    const context = canvasEle.getContext("2d");
+
+    let imageObj = new Image();
+    imageObj.src = image;
+    imageObj.onload = function () {
+      context.drawImage(
+        imageObj,
+        imgCroppedArea.x,
+        imgCroppedArea.y,
+        imgCroppedArea.width,
+        imgCroppedArea.height,
+        0,
+        0,
+        imgCroppedArea.width,
+        imgCroppedArea.height
+      );
+
+      const dataUrl = canvasEle.toDataURL("image/jpg");
+      setImgAfterCrop(dataUrl);
+    };
+  };
+
+  /* Reset imagenes */
+  const resetImages = () => {
+    setImage("");
+    setImgAfterCrop("");
   };
 
   return (
-    <AppContext.Provider value={{ posts, addPost }}>
+    <AppContext.Provider
+      value={{
+        posts,
+        text,
+        isOpenModal,
+        isOpenModalEdit,
+        image,
+        imgAfterCrop,
+        addPost,
+        setText,
+        setIsOpenModal,
+        setIsOpenModalEdit,
+        setImage,
+        onCropDone,
+        resetImages
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

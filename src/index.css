@@ -10,6 +10,9 @@
 
 @layer components {
   .btn {
-    @apply py-2 px-5 bg-green-600 text-black font-bold rounded-3xl hover:bg-green-400 transition-colors;
+    @apply py-2 px-5 bg-green-600 text-black font-bold rounded-3xl hover:bg-green-400;
+  }
+  .btn-secondary {
+    @apply py-2 px-5 text-slate-200 font-bold rounded-3xl hover:bg-neutral-700;
   }
 }
