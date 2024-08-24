@@ -63,7 +63,7 @@ export default function Post({
             />
           </div>
         )}
-        <p>{postText}</p>
+        {postText && <p>{postText}</p>}
       </div>
 
       {/* - */}

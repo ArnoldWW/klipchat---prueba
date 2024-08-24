@@ -14,7 +14,7 @@ import FileInput from "./FileInput";
 import { notificationError, notificationSuccess } from "./Toast";
 
 export default function PostForm() {
-  const { text, addPost, setText, setOpenModal, setImage } =
+  const { text, image, addPost, setText, setOpenModal, setImage } =
     useContext(AppContext);
 
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -31,8 +31,8 @@ export default function PostForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (text.trim() === "")
-      return notificationError("Escriba algo en su publicacion");
+    if (text.trim() === "" && !image)
+      return notificationError("Escriba o añada una imagen en su publicacion");
 
     addPost(text);
     notificationSuccess("Publicacion creada");
