@@ -13,28 +13,24 @@ export default function Modal() {
   const {
     image,
     imgAfterCrop,
-    isOpenModal,
-    setIsOpenModal,
-    setIsOpenModalEdit,
+    openModal,
+    setOpenModal,
+    setOpenModalEdit,
     resetImages
   } = useContext(AppContext);
 
   const handleOnClose = () => {
     resetImages();
-    setIsOpenModal(false);
+    setOpenModal(false);
   };
 
   const openModalEdit = () => {
-    setIsOpenModal(false);
-    setIsOpenModalEdit(true);
+    setOpenModal(false);
+    setOpenModalEdit(true);
   };
 
   return (
-    <Dialog
-      open={isOpenModal}
-      onClose={handleOnClose}
-      className="relative z-50"
-    >
+    <Dialog open={openModal} onClose={handleOnClose} className="relative z-50">
       <DialogBackdrop className="fixed inset-0 bg-green-900/30" />
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4 text-slate-200 overflow-y-auto">
         <DialogPanel className="min-w-[700px] border border-neutral-600 bg-[#292927] rounded-3xl">
@@ -50,6 +46,7 @@ export default function Modal() {
           </div>
           {/* ---- */}
           <div className="px-5 py-5 flex flex-col gap-5">
+            {/* ---- */}
             <div className="relative rounded-3xl overflow-hidden">
               <div className="absolute top-0 left-0 w-full flex justify-between pt-3 px-3">
                 <div className="flex gap-2">

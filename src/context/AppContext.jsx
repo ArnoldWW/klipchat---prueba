@@ -19,8 +19,8 @@ export const AppContext = createContext(null);
 function AppProvider({ children }) {
   const [posts, setPosts] = useState(INITIALPOSTS);
   const [text, setText] = useState("");
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [openModalEdit, setOpenModalEdit] = useState(false);
   const [image, setImage] = useState("");
   const [imgAfterCrop, setImgAfterCrop] = useState("");
 
@@ -40,7 +40,7 @@ function AppProvider({ children }) {
     setPosts([...posts, newPost]);
     setText("");
     resetImages();
-    setIsOpenModal(false);
+    setOpenModal(false);
   };
 
   /* Guardar el recorte de la imagen */
@@ -82,14 +82,14 @@ function AppProvider({ children }) {
       value={{
         posts,
         text,
-        isOpenModal,
-        isOpenModalEdit,
+        openModal,
+        openModalEdit,
         image,
         imgAfterCrop,
         addPost,
         setText,
-        setIsOpenModal,
-        setIsOpenModalEdit,
+        setOpenModal,
+        setOpenModalEdit,
         setImage,
         onCropDone,
         resetImages

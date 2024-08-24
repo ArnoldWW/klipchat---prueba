@@ -12,9 +12,9 @@ import Cropper from "react-easy-crop";
 export default function ModalEdit() {
   const {
     image,
-    isOpenModalEdit,
-    setIsOpenModal,
-    setIsOpenModalEdit,
+    openModalEdit,
+    setOpenModal,
+    setOpenModalEdit,
     onCropDone,
     resetImages
   } = useContext(AppContext);
@@ -26,14 +26,16 @@ export default function ModalEdit() {
   /* const [aspectRadio, setAspectRadio] = useState(4 / 3); */
 
   const handleOnClose = () => {
-    setIsOpenModal(true);
-    setIsOpenModalEdit(false);
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+    setOpenModal(true);
+    setOpenModalEdit(false);
   };
 
   const handleOnCloseAll = () => {
     resetImages();
-    setIsOpenModal(false);
-    setIsOpenModalEdit(false);
+    setOpenModal(false);
+    setOpenModalEdit(false);
   };
 
   const onCropComplete = (croppedAreaPercentage, croppedAreaPixels) => {
@@ -42,7 +44,7 @@ export default function ModalEdit() {
 
   return (
     <Dialog
-      open={isOpenModalEdit}
+      open={openModalEdit}
       onClose={handleOnCloseAll}
       className="relative z-50"
     >

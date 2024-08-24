@@ -21,7 +21,6 @@ export default function FileInput({ onImageSelected }) {
 
   return (
     <button
-      /* htmlFor="photo" */
       type="button"
       className="block p-1 hover:bg-neutral-700 rounded-full cursor-pointer"
       onClick={onChooseImg}

@@ -14,7 +14,7 @@ import FileInput from "./FileInput";
 import { notificationError, notificationSuccess } from "./Toast";
 
 export default function PostForm() {
-  const { text, addPost, setText, setIsOpenModal, setImage } =
+  const { text, addPost, setText, setOpenModal, setImage } =
     useContext(AppContext);
 
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -45,7 +45,7 @@ export default function PostForm() {
 
     //abrir el modal
     if (selectedImg) {
-      setIsOpenModal(true);
+      setOpenModal(true);
     }
   };
 
