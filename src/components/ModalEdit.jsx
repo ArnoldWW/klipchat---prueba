@@ -15,8 +15,8 @@ export default function ModalEdit() {
     openModalEdit,
     setOpenModal,
     setOpenModalEdit,
-    onCropDone,
-    resetImages
+    setImage,
+    onCropDone
   } = useContext(AppContext);
 
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -33,7 +33,7 @@ export default function ModalEdit() {
   };
 
   const handleOnCloseAll = () => {
-    resetImages();
+    setImage("");
     setOpenModal(false);
     setOpenModalEdit(false);
   };

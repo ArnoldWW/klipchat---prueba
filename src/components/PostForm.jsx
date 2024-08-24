@@ -69,7 +69,7 @@ export default function PostForm() {
             <FaceSmileIcon className="size-5 text-white block" />
           </button>
           {showEmojiPicker && (
-            <div className="absolute bottom-[-10] right-0">
+            <div className="absolute top-[90%] right-0">
               <Picker data={data} onEmojiSelect={addEmoji} />
             </div>
           )}

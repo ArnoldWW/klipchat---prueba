@@ -10,11 +10,11 @@ import { AppContext } from "../context/AppContext";
 import PostForm from "./PostForm";
 
 export default function Modal() {
-  const { image, openModal, setOpenModal, setOpenModalEdit, resetImages } =
+  const { image, openModal, setOpenModal, setOpenModalEdit, setImage } =
     useContext(AppContext);
 
   const handleOnClose = () => {
-    resetImages();
+    setImage("");
     setOpenModal(false);
   };
 
