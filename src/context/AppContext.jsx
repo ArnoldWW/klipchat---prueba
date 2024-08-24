@@ -22,13 +22,12 @@ function AppProvider({ children }) {
   const [openModal, setOpenModal] = useState(false);
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [image, setImage] = useState("");
-  const [imgAfterCrop, setImgAfterCrop] = useState("");
 
   /* Añadir una publicacion */
   const addPost = (text) => {
     const newPost = {
       id: uuidv4(),
-      image: imgAfterCrop ? imgAfterCrop : image,
+      image,
       userName: "Arnold",
       minutes: "0",
       likes: 0,
@@ -67,14 +66,13 @@ function AppProvider({ children }) {
       );
 
       const dataUrl = canvasEle.toDataURL("image/jpg");
-      setImgAfterCrop(dataUrl);
+      setImage(dataUrl);
     };
   };
 
   /* Reset imagenes */
   const resetImages = () => {
     setImage("");
-    setImgAfterCrop("");
   };
 
   return (
@@ -85,7 +83,6 @@ function AppProvider({ children }) {
         openModal,
         openModalEdit,
         image,
-        imgAfterCrop,
         addPost,
         setText,
         setOpenModal,

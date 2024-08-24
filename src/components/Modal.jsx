@@ -10,14 +10,8 @@ import { AppContext } from "../context/AppContext";
 import PostForm from "./PostForm";
 
 export default function Modal() {
-  const {
-    image,
-    imgAfterCrop,
-    openModal,
-    setOpenModal,
-    setOpenModalEdit,
-    resetImages
-  } = useContext(AppContext);
+  const { image, openModal, setOpenModal, setOpenModalEdit, resetImages } =
+    useContext(AppContext);
 
   const handleOnClose = () => {
     resetImages();
@@ -71,10 +65,7 @@ export default function Modal() {
                 </div>
               </div>
 
-              <img
-                src={imgAfterCrop ? imgAfterCrop : image}
-                className="object-cover w-full max-h-[500px]"
-              />
+              <img src={image} className="object-cover w-full max-h-[500px]" />
             </div>
             {/* ---- */}
             <div className="flex gap-2 justify-between">
