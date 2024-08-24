@@ -38,7 +38,7 @@ function AppProvider({ children }) {
 
     setPosts([...posts, newPost]);
     setText("");
-    resetImages();
+    setImage("");
     setOpenModal(false);
   };
 
@@ -70,11 +70,6 @@ function AppProvider({ children }) {
     };
   };
 
-  /* Reset imagenes */
-  const resetImages = () => {
-    setImage("");
-  };
-
   return (
     <AppContext.Provider
       value={{
@@ -88,8 +83,7 @@ function AppProvider({ children }) {
         setOpenModal,
         setOpenModalEdit,
         setImage,
-        onCropDone,
-        resetImages
+        onCropDone
       }}
     >
       {children}
