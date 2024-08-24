@@ -44,11 +44,11 @@ export default function Modal() {
             <div className="relative rounded-3xl overflow-hidden">
               <div className="absolute top-0 left-0 w-full flex justify-between pt-3 px-3">
                 <div className="flex gap-2">
-                  <button className="p-2 bg-neutral-500  hover:bg-neutral-700 rounded-full cursor-pointer">
+                  <button className="p-2 bg-neutral-500/70  hover:bg-neutral-700/70 rounded-full cursor-pointer">
                     <PlusIcon className="size-6 text-white block" />
                   </button>
                   <button
-                    className="py-2 px-5 bg-neutral-500  hover:bg-neutral-700 rounded-full cursor-pointer flex gap-2"
+                    className="py-2 px-5 bg-neutral-500/70   hover:bg-neutral-700/70 rounded-full cursor-pointer flex gap-2"
                     onClick={openModalEdit}
                   >
                     <PencilIcon className="size-6 text-white block" />
@@ -57,7 +57,7 @@ export default function Modal() {
                 </div>
                 <div>
                   <button
-                    className="p-2 bg-neutral-500  hover:bg-neutral-700 rounded-full cursor-pointer"
+                    className="p-2 bg-neutral-500/70  hover:bg-neutral-700/70 rounded-full cursor-pointer"
                     onClick={handleOnClose}
                   >
                     <XMarkIcon className="size-6 text-white block" />
