@@ -8,12 +8,11 @@ import EditModal from "./components/EditModal";
 import GalleryModal from "./components/GalleryModal";
 
 function App() {
-  const { posts, image } = useContext(AppContext);
+  const { posts } = useContext(AppContext);
 
   return (
     <div className="py-5">
       <section className="w-[90%] max-w-[800px] mx-auto space-y-3">
-        {image && <img src={image} className="w-32" />}
         <h2 className="font-bold text-xl">KlipWall</h2>
         <div className="rounded-2xl p-5 bg-[#292927] flex justify-between gap-3">
           <PostForm />
