@@ -20,14 +20,17 @@ function AppProvider({ children }) {
   const [posts, setPosts] = useState(INITIALPOSTS);
   const [text, setText] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const [openModalEdit, setOpenModalEdit] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [openGalleryModal, setOpenGalleryModal] = useState(false);
   const [image, setImage] = useState("");
+  const [imgGallery, setImgGallery] = useState([]);
 
   /* Añadir una publicacion */
   const addPost = (text) => {
     const newPost = {
       id: uuidv4(),
       image,
+      imgGallery,
       userName: "Arnold",
       minutes: "0",
       likes: 0,
@@ -39,7 +42,9 @@ function AppProvider({ children }) {
     setPosts([...posts, newPost]);
     setText("");
     setImage("");
+    setImgGallery([]);
     setOpenModal(false);
+    document.getElementById("photo").value = "";
   };
 
   /* Guardar el recorte de la imagen */
@@ -70,20 +75,32 @@ function AppProvider({ children }) {
     };
   };
 
+  const closeAllModals = () => {
+    setOpenModal(false);
+    setOpenEditModal(false);
+    setOpenGalleryModal(false);
+    document.getElementById("photo").value = "";
+  };
+
   return (
     <AppContext.Provider
       value={{
         posts,
         text,
         openModal,
-        openModalEdit,
+        openEditModal,
+        openGalleryModal,
         image,
+        imgGallery,
         addPost,
         setText,
         setOpenModal,
-        setOpenModalEdit,
+        setOpenEditModal,
+        setOpenGalleryModal,
         setImage,
-        onCropDone
+        setImgGallery,
+        onCropDone,
+        closeAllModals
       }}
     >
       {children}

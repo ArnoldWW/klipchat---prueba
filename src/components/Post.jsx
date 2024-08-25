@@ -11,6 +11,7 @@ import {
 export default function Post({
   avartar = "/user.jpg",
   image,
+  imgGallery,
   userName,
   minutes,
   likes = 0,
@@ -53,18 +54,32 @@ export default function Post({
       </div>
 
       {/* - */}
-      <div className="space-y-3">
+      <div
+        className={`${imgGallery?.length > 0 ? "grid grid-cols-2 gap-2" : ""}`}
+      >
         {image && (
-          <div className="mx-auto rounded-3xl overflow-hidden">
-            <img
-              src={image}
-              alt="post image"
-              className="object-cover w-full max-h-[500px]"
-            />
-          </div>
+          <img
+            src={image}
+            alt="image post"
+            className={`rounded-xl overflow-hidden w-full object-cover ${
+              imgGallery?.length === 0 ? "max-h-[500px]" : "max-h-[300px]"
+            }`}
+          />
         )}
-        {postText && <p>{postText}</p>}
+        {imgGallery?.map((image) => (
+          <img
+            key={image.id}
+            src={image?.src}
+            alt="post image"
+            className={`rounded-xl overflow-hidden w-full h-full object-cover max-h-[300px] ${
+              imgGallery?.length === 2 ? "last:col-span-2" : ""
+            }`}
+          />
+        ))}
       </div>
+      {/* - */}
+
+      <div>{postText && <p>{postText}</p>}</div>
 
       {/* - */}
       <div className="border-t-2 border-[#383835] pt-2 grid grid-cols-3">

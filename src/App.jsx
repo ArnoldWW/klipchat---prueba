@@ -4,7 +4,8 @@ import PostForm from "./components/PostForm";
 import Post from "./components/Post";
 import PostListTopBar from "./components/PostListTopBar";
 import Modal from "./components/Modal";
-import ModalEdit from "./components/ModalEdit";
+import EditModal from "./components/EditModal";
+import GalleryModal from "./components/GalleryModal";
 
 function App() {
   const { posts, image } = useContext(AppContext);
@@ -27,6 +28,7 @@ function App() {
               key={post.id}
               avartar={post.avartar}
               image={post.image}
+              imgGallery={post.imgGallery}
               userName={post.userName}
               minutes={post.minutes}
               likes={post.likes}
@@ -38,7 +40,8 @@ function App() {
       </section>
 
       <Modal />
-      <ModalEdit />
+      <EditModal />
+      <GalleryModal />
     </div>
   );
 }

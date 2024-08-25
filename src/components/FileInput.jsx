@@ -26,9 +26,9 @@ export default function FileInput({ onImageSelected }) {
       onClick={onChooseImg}
     >
       <input
+        id="photo"
         type="file"
         accept="image/png, image/jpeg"
-        id="photo"
         className="hidden"
         ref={inputRef}
         onChange={handleOnChage}
