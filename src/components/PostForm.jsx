@@ -33,6 +33,7 @@ export default function PostForm() {
   }, [posts]);
 
   const handleChange = (e) => {
+    if (!showForm) setShowForm(true);
     setText(e.target.value);
   };
 
