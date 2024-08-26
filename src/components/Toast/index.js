@@ -5,14 +5,16 @@ const STYLES = {
   color: "#fff"
 };
 
-export function notificationError(text) {
+export function notificationError(text, duration = "500") {
   toast.error(text, {
-    style: STYLES
+    style: STYLES,
+    duration
   });
 }
 
-export function notificationSuccess(text) {
+export function notificationSuccess(text, duration = "500") {
   toast.success(text, {
-    style: STYLES
+    style: STYLES,
+    duration
   });
 }

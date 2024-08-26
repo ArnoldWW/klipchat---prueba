@@ -8,6 +8,7 @@ import {
 import { XMarkIcon, PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { AppContext } from "../context/AppContext";
 import PostForm from "./PostForm";
+import { notificationSuccess } from "./Toast";
 
 export default function Modal() {
   const {
@@ -29,6 +30,9 @@ export default function Modal() {
   };
 
   const openEditModal = () => {
+    notificationSuccess(
+      "Puedes hacer zoom en la imagen con la rueda del mouse."
+    );
     setOpenModal(false);
     setOpenEditModal(true);
   };
