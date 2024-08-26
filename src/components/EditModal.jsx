@@ -28,8 +28,8 @@ export default function EditModal() {
   const handleOnClose = () => {
     setCrop({ x: 0, y: 0 });
     setZoom(1);
-    setOpenModal(true);
     setOpenEditModal(false);
+    setOpenModal(true);
   };
 
   const onCropComplete = (croppedAreaPercentage, croppedAreaPixels) => {
